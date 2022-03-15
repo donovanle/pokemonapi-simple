@@ -3,10 +3,11 @@ import React,{useEffect, useState} from 'react'
 const Fetchpokemon = () => {
     const [pokemon, setPokemon] = useState([])
 
-    const fetchPokemon = () =>{
-        fetch("https://pokeapi.co/api/v2/pokemon?limit=803")
-            .then(response => {return response.json()})
-            .then(response => {setPokemon(response.results)})    
+    const fetchPokemon = async() =>{
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=803")
+        console.log(response)
+        const jsonResponse = await response.json()
+        setPokemon(jsonResponse.results)   
     };
 
   return (
